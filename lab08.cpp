@@ -61,8 +61,13 @@ unsigned fib(unsigned n) {
 // helper for multiplication
 unsigned multHelper(unsigned x, unsigned y, unsigned acc) {
     if (y == 0) return acc;
-    return multHelper(x, y - 1, acc + x);
+    if (y % 2 == 0) {
+        return multHelper (x + x, y / 2, acc);
+    } else {
+        return multHelper (x, y - 1, acc + x);
+    }
 }
+
 unsigned mult(unsigned x, unsigned y) {
     return multHelper(x, y, 0);
 }
